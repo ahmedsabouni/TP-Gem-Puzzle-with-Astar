@@ -1,27 +1,16 @@
 public class Grille {
-    private int Ligne0;
-    private  int taille ;
-    private int colonne0;
     private int[][] grille;
-
+    
     public Grille(int[][] g) {
-        this.grille = g;
+        this.grille = g;    
     }
 
     public int[][] getGrille() {
         return grille;
     }
 
-    public int getColonne0() {
-        return colonne0;
-    }
-
-    public int getLigne0() {
-        return Ligne0;
-    }
-
     public int getTaille() {
-        return taille;
+        return this.grille.length;
     }
 
     public int getValeur(int i, int j) {
@@ -29,14 +18,20 @@ public class Grille {
     }
 
     public int[][] copier() {
-        return this.grille;
+        int[][] copie = new int[this.grille.length][this.grille.length];
+        for (int i = 0; i < this.grille.length; i++) {
+            for (int j = 0; j < this.grille.length; j++) {
+                copie[i][j] = this.grille[i][j];
+            }
+        }
+        return copie;
     }
 
     public String toString() {
         String s = "";
         for (int i = 0; i < this.grille.length; i++) {
             for (int j = 0; j < this.grille.length; j++) {
-                s += this.getValeur(i, j) + " ";
+                s += this.getValeur(i, j) + " | ";
             }
             s += "\n";
         }
@@ -44,6 +39,20 @@ public class Grille {
     }
 
     public boolean equals(Object obj) {
-        return this.equals(obj);
+        if (obj instanceof Grille) {
+            Grille g = (Grille) obj;
+            if (this.grille.length != g.getGrille().length) {
+                return false;
+            }
+            for (int i = 0; i < this.grille.length; i++) {
+                for (int j = 0; j < this.grille.length; j++) {
+                    if (this.grille[i][j] != g.getGrille()[i][j]) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }
