@@ -95,7 +95,7 @@ public class Solveur {
         ArrayList<Grille> chemin = new ArrayList<>();
         Noeud noeud = noeudFinal;
         chemin.add(noeud.getGrille());
-        System.out.println("nombre de permutation pour atteindre la solution " + noeud.getG());
+        System.out.println("Cout pour attendre la solution :" + noeud.getG());
         while (noeud.getPere() != null){
             noeud = noeud.getPere();
             chemin.add(noeud.getGrille());
